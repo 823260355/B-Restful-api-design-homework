@@ -45,4 +45,9 @@ public class GroupService {
         }
         return groups;
     }
+
+    public Group updateGroupName(int id, String groupName) {
+        groups.get(id - 1).setName(groupName);
+        return groups.get(id - 1);
+    }
 }

@@ -1,12 +1,11 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.controller;
 
 
+import com.thoughtworks.capability.gtb.restfulapidesign.domain.Group;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.GroupService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -22,5 +21,10 @@ public class GroupController {
     @GetMapping
     public ResponseEntity<List> getGroup() {
         return ResponseEntity.status(HttpStatus.OK).body(groupService.splitIntoTeams());
+    }
+
+    @PatchMapping("/{id}")
+    public ResponseEntity<Group> updateTeamName(@PathVariable int id, @RequestParam String groupName) {
+        return ResponseEntity.status(HttpStatus.OK).body(groupService.updateGroupName(id, groupName));
     }
 }
