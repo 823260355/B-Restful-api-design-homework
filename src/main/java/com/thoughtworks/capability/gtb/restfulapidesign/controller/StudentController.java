@@ -39,4 +39,9 @@ public class StudentController {
         return ResponseEntity.status(HttpStatus.OK).body(studentService.getStudentById(id));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<Student> updateStudentInfo(@PathVariable int id, @RequestBody Student studentInfo) {
+        return ResponseEntity.status(HttpStatus.OK).body(studentService.updateStudent(id, studentInfo));
+    }
+
 }
