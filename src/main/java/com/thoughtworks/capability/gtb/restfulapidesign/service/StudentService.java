@@ -34,4 +34,8 @@ public class StudentService {
         }
         return students.stream().filter(student -> student.getGender().equals(gender)).collect(Collectors.toList());
     }
+
+    public Student getStudentById(int id) {
+        return students.get(id - 1);
+    }
 }
